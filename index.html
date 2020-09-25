@@ -3,62 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Documentation Page</title>
+    <title>SASS Technical Documentation Page</title>
 </head>
 <body>
     <nav id="navbar">
         <header></header>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
-        <a href="#" class="nav-link">header</a>
+        <a href="#syntax" class="nav-link">Syntax</a>
+        <a href="#style-rules" class="nav-link">Style Rules</a>
+        <a href="#variables" class="nav-link">Variables</a>
+        <a href="#interpolation" class="nav-link">Interpolation</a>
+        <a href="#at-rules" class="nav-link">At-Rules</a>
+        <a href="#values" class="nav-link">Values</a>
+        <a href="#operators" class="nav-link">Operators</a>
+        <a href="#built-in-modules" class="nav-link">Built-In Modules</a>
+        <a href="#breaking-changes" class="nav-link">Breaking Changes</a>
+        <a href="#command-line" class="nav-link">command-line-interface</a>
     </nav>
     <main id="main-doc">
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="syntax">
+            <header>Syntax</header>
+            <article>
+                <h2>Sass supports two different syntaxes. Each one can load the other, so it's up to you and your team which one to choose.</h2>
+                <h3>SCSS</h3>
+                <p>The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of CSS, which means essentially all valid CSS is valid SCSS as well. Because of its similarity to CSS, it’s the easiest syntax to get used to and the most popular.</p>
+                <p>SCSS looks like this:</p>
+                <code>@mixin button-base() {
+                    @include typography(button);
+                    @include ripple-surface;
+                    @include ripple-radius-bounded;
+                  
+                    display: inline-flex;
+                    position: relative;
+                    height: $button-height;
+                    border: none;
+                    vertical-align: middle;
+                  
+                    &:hover { cursor: pointer; }
+                  
+                    &:disabled {
+                      color: $mdc-button-disabled-ink-color;
+                      cursor: default;
+                      pointer-events: none;
+                    }
+                  }
+                  </code>
+                <h3>The Indented Syntax</h3>
+                <p>The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.</p>
+                <p>In general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a few additional differences in the indented syntax that are noted throughout the reference.</p>
+                <p>The indented syntax looks like this:</p>
+                <code>@mixin button-base()
+                    @include typography(button)
+                    @include ripple-surface
+                    @include ripple-radius-bounded
+                  
+                    display: inline-flex
+                    position: relative
+                    height: $button-height
+                    border: none
+                    vertical-align: middle
+                  
+                    &:hover
+                      cursor: pointer
+                  
+                    &:disabled
+                      color: $mdc-button-disabled-ink-color
+                      cursor: default
+                      pointer-events: none
+                  </code>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="style-rules">
+            <header>Style Rules</header>
+            <article>
+                <h2>Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and declare properties that affect how those elements look.</h2>
+                <h3>SCSS</h3>
+                <code>.button {
+                    padding: 3px 10px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    border: 1px solid #e1e4e8;
+                  }
+                  </code>
+                <h3>Sass</h3>
+                <code>.button
+                    padding: 3px 10px
+                    font-size: 12px
+                    border-radius: 3px
+                    border: 1px solid #e1e4e8
+                  </code>
+                <h3>CSS</h3>
+                <code>.button {
+                    padding: 3px 10px;
+                    font-size: 12px;
+                    border-radius: 3px;
+                    border: 1px solid #e1e4e8;
+                  }
+                  </code>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="variables">
+            <header>Variables</header>
+            <article>
+                <h2>Sass variables are simple: you assign a value to a name that begins with $, and then you can refer to that name instead of the value itself. But despite their simplicity, they're one of the most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do complex math, configure libraries, and much more.</h2>
+                <p>A variable declaration looks a lot like a property declaration: it’s written <variable>: <expression>. Unlike a property, which can only be declared in a style rule or at-rule, variables can be declared anywhere you want. To use a variable, just include it in a value.</p>
+                <h3>SCSS</h3>
+                <code>$base-color: #c6538c;
+                    $border-dark: rgba($base-color, 0.88);
+                    
+                    .alert {
+                      border: 1px solid $border-dark;
+                    }
+                    </code>
+                <h3>Sass</h3>
+                <code>$base-color: #c6538c
+                    $border-dark: rgba($base-color, 0.88)
+                    
+                    .alert
+                      border: 1px solid $border-dark
+                    </code>
+                <h3>CSS</h3>
+                <code>.alert {
+                    border: 1px solid rgba(198, 83, 140, 0.88);
+                  }
+                  
+                  
+                  
+                  </code>
+                <aside>
+                    <h3>Heads up!</h3>
+                    <p>CSS has variables of its own, which are totally different than Sass variables. Know the differences!</p>
+                    <ul>
+                        <li>Sass variables are all compiled away by Sass. CSS variables are included in the CSS output.</li>
+                        <li>CSS variables can have different values for different elements, but Sass variables only have one value at a time.</li>
+                        <li>Sass variables are imperative, which means if you use a variable and then change its value, the earlier use will stay the same. CSS variables are declarative, which means if you change the value, it’ll affect both earlier uses and later uses.</li>
+                    </ul>
+                    <h3>SCSS</h3>
+                    <code>$variable: value 1;
+                        .rule-1 {
+                          value: $variable;
+                        }
+                        
+                        $variable: value 2;
+                        .rule-2 {
+                          value: $variable;
+                        }
+                        </code>
+                    <h3>Sass</h3>
+                    <code>$variable: value 1
+                        .rule-1
+                          value: $variable
+                        
+                        
+                        $variable: value 2
+                        .rule-2
+                          value: $variable
+                        </code>
+                    <h3>CSS</h3>
+                    <code>.rule-1 {
+                        value: value 1;
+                      }
+                      
+                      .rule-2 {
+                        value: value 2;
+                      }
+                      
+                      
+                      </code>
+                </aside>
+                <aside>
+                    <h3>Fun fact:</h3>
+                    <p>Sass variables, like all Sass identifiers, treat hyphens and underscores as identical. This means that $font-size and $font_size both refer to the same variable. This is a historical holdover from the very early days of Sass, when it only allowed underscores in identifier names. Once Sass added support for hyphens to match CSS’s syntax, the two were made equivalent to make migration easier.</p>
+                </aside>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="interpolation">
+            <header>Interpolation</header>
+            <article>
+                <h2>Interpolation can be used almost anywhere in a Sass stylesheet to embed the result of a SassScript expression into a chunk of CSS. Just wrap an expression in #{} in any of the following places:</h2>
+                <ul>
+                    <li>Selectors in style rules</li>
+                    <li>Property names in declarations</li>
+                    <li>Custom property values</li>
+                    <li>CSS at-rules</li>
+                    <li>@extends</li>
+                    <li>Plain CSS @imports</li>
+                    <li>Quoted or unquoted strings</li>
+                    <li>Special functions</li>
+                    <li>Plain CSS function names</li>
+                    <li>Loud comments</li>
+                </ul>
+                <h3>SCSS</h3>
+                <code>@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+                    .icon-#{$name} {
+                      background-image: url("/icons/#{$name}.svg");
+                      position: absolute;
+                      #{$top-or-bottom}: 0;
+                      #{$left-or-right}: 0;
+                    }
+                  }
+                  
+                  @include corner-icon("mail", top, left);
+                  </code>
+                <h3>Sass</h3>
+                <code>@mixin corner-icon($name, $top-or-bottom, $left-or-right)
+                    .icon-#{$name}
+                      background-image: url("/icons/#{$name}.svg")
+                      position: absolute
+                      #{$top-or-bottom}: 0
+                      #{$left-or-right}: 0
+                  
+                  
+                  
+                  @include corner-icon("mail", top, right)
+                  </code>
+                <h3>CSS</h3>
+                <code>.icon-mail {
+                    background-image: url("/icons/mail.svg");
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                  }
+                  
+                  
+                  
+                  
+                  </code>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="at-rules">
+            <header>At-Rules</header>
+            <article>
+                <h2>Much of Sass’s extra functionality comes in the form of new at-rules it adds on top of CSS:</h2>
+                <ul>
+                    <li>@use loads mixins, functions, and variables from other Sass stylesheets, and combines CSS from multiple stylesheets together.</li>
+                    <li>@forward loads a Sass stylesheet and makes its mixins, functions, and variables available when your stylesheet is loaded with the @use rule.</li>
+                    <li>@import extends the CSS at-rule to load styles, mixins, functions, and variables from other stylesheets.</li>
+                    <li>@mixin and @include makes it easy to re-use chunks of styles.</li>
+                    <li>@function defines custom functions that can be used in SassScript expressions.</li>
+                    <li>@extend allows selectors to inherit styles from one another.</li>
+                    <li>@at-root puts styles within it at the root of the CSS document.</li>
+                    <li>@error causes compilation to fail with an error message.</li>
+                    <li>@warn prints a warning without stopping compilation entirely.</li>
+                    <li>@debug prints a message for debugging purposes.</li>
+                    <li>Flow control rules like @if, @each, @for, and @while control whether or how many times styles are emitted.</li>
+                </ul>
+                <p>Sass also has some special behavior for plain CSS at-rules: they can contain interpolation, and they can be nested in style rules. Some of them, like @media and @supports, also allow SassScript to be used directly in the rule itself without interpolation.</p>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="values">
+            <header>Values</header>
+            <article>
+                <h2>Sass supports a number of value types, most of which come straight from CSS. Every expression produces a value, variables hold values. Most value types come straight from CSS:</h2>
+                <ul>
+                    <li>Numbers, which may or may not have units, like 12 or 100px.</li>
+                    <li>Strings, which may or may not have quotes, like "Helvetica Neue" or bold.</li>
+                    <li>Colors, which can be referred to by their hex representation or by name, like #c6538c or blue, or returned from functions, like rgb(107, 113, 127) or hsl(210, 100%, 20%).</li>
+                    <li>Lists of values, which may be separated by spaces or commas and which may be enclosed in square brackets or no brackets at all, like 1.5em 1em 0 2em, Helvetica, Arial, sans-serif, or [col1-start].</li>
+                </ul>
+                <p>A few more are specific to Sass:</p>
+                <ul>
+                    <li>The boolean values true and false.</li>
+                    <li>The singleton null value.</li>
+                    <li>Maps that associate values with keys, like ("background": red, "foreground": pink).</li>
+                    <li>Function references returned by get-function() and called with call().</li>
+                </ul>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="operators">
+            <header>Operators</header>
+            <article>
+                <h2>Sass supports a handful of useful operators for working with different values. These include the standard mathematical operators like + and *, as well as operators for various other types:</h2>
+                <ul>
+                    <li>== and != are used to check if two values are the same.</li>
+                    <li>+, -, *, /, and % have their usual mathematical meaning for numbers, with special behaviors for units that matches the use of units in scientific math.</li>
+                    <li>&lt;, &lt;=, >, and >= check whether two numbers are greater or less than one another.</li>
+                    <li>and, or, and not have the usual boolean behavior. Sass considers every value “true” except for false and null.</li>
+                    <li>+, -, and / can be used to concatenate strings.</li>
+                    <aside>
+                        <h3>Heads up!</h3>
+                        <p>Early on in Sass’s history, it added support for mathematical operations on colors. These operations operated on each of the colors’ RGB channels separately, so adding two colors would produce a color with the sum of their red channels as its red channel and so on.</p>
+                        <p>This behavior wasn’t very useful, since it channel-by-channel RGB arithmetic didn’t correspond well to how humans perceive color. Color functions were added which are much more useful, and color operations were deprecated. They’re still supported in LibSass and Ruby Sass, but they’ll produce warnings and users are strongly encouraged to avoid them.</p>
+                    </aside>
+                </ul>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="built-in-modules">
+            <header>Built-In Modules</header>
+            <article>
+                <h2>Sass provides many built-in modules which contain useful functions (and the occasional mixin). These modules can be loaded with the @use rule like any user-defined stylesheet, and their functions can be called like any other module member. All built-in module URLs begin with sass: to indicate that they're part of Sass itself.</h2>
+                <aside>
+                    <h3>Heads up!</h3>
+                    <p>Before the Sass module system was introduced, all Sass functions were globally available at all times. Many functions still have global aliases (these are listed in their documentation). The Sass team discourages their use and will eventually deprecate them, but for now they remain available for compatibility with older Sass versions and with LibSass (which doesn’t support the module system yet).</p>
+                    <p>A few functions are only available globally even in the new module system, either because they have special evaluation behavior (if()) or because they add extra behavior on top of built-in CSS functions (rgb() and hsl()). These will not be deprecated and can be used freely.</p>
+                </aside>
+                <h3>SCSS</h3>
+                <code>@use "sass:color";
+
+                    .button {
+                      $primary-color: #6b717f;
+                      color: $primary-color;
+                      border: 1px solid color.scale($primary-color, $lightness: 20%);
+                    }
+                    </code>
+                <h3>Sass</h3>
+                <code>@use "sass:color"
+
+                    .button
+                      $primary-color: #6b717f
+                      color: $primary-color
+                      border: 1px solid color.scale($primary-color, $lightness: 20%)
+                    
+                    </code>
+                <h3>CSS</h3>
+                <code>.button {
+                    color: #6b717f;
+                    border: 1px solid #878d9a;
+                  }
+                  
+                  </code>
+                <p>Sass provides the following built-in modules:</p>
+                <ul>
+                    <li>The sass:math module provides functions that operate on numbers.</li>
+                    <li>The sass:string module makes it easy to combine, search, or split apart strings.</li>
+                    <li>The sass:color module generates new colors based on existing ones, making it easy to build color themes.</li>
+                    <li>The sass:list module lets you access and modify values in lists.</li>
+                    <li>The sass:map module makes it possible to look up the value associated with a key in a map, and much more.</li>
+                    <li>The sass:selector module provides access to Sass’s powerful selector engine.</li>
+                    <li>The sass:meta module exposes the details of Sass’s inner workings.</li>
+                </ul>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="breaking-changes">
+            <header>Breaking Changes</header>
+            <article>
+                <h2>New versions of Sass are as backwards-compatible as possible, but sometimes a breaking change is necessary. Sass needs to keep up with the evolving CSS specification, and old language design mistakes occasionally need to be fixed.</h2>
+                <p>Before each breaking change is released, Sass implementations will produce deprecation warnings for stylesheets whose behavior will change. Whenever possible, these warnings will include suggestions for how to update the deprecated styles to make them forward-compatible.</p>
+                <p>Different implementations have different policies for breaking changes and deprecations. Dart Sass will emit deprecation warnings for at least three months before releasing a breaking change, and will release the breaking change with a new major version number unless that change is necessary for CSS compatibility. CSS compatibility changes are often both non-disruptive and time-sensitive, so they may be released with new minor version numbers instead.</p>
+                <p>These breaking changes are coming soon or have recently been released:</p>
+                <ul>
+                    <li>Compound selectors could not be extended in Dart Sass 1.0.0 and Ruby Sass 4.0.0.</li>
+                    <li>The syntax for CSS custom property values changed in Dart Sass 1.0.0, LibSass 3.5.0, and Ruby Sass 3.5.0.</li>
+                </ul>
+            </article>
         </section>
-        <section class="main-section" id="topic">
-            <header></header>
-            <article></article>
+        <section class="main-section" id="command-line">
+            <header>Command Line</header>
+            <article>
+                <h2>Different implementations of Sass have different interfaces when using them from the command line:</h2>
+                <ul>
+                    <li>Dart Sass has the same command-line interface no matter how you install it.</li>
+                    <li>Ruby Sass is deprecated, and we recommend you move to a different implementation.</li>
+                </ul>
+            </article>
         </section>
     </main>
     

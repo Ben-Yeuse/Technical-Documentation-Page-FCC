@@ -4,24 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SASS Technical Documentation Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav id="navbar">
-        <header></header>
-        <a href="#syntax" class="nav-link">Syntax</a>
-        <a href="#style-rules" class="nav-link">Style Rules</a>
-        <a href="#variables" class="nav-link">Variables</a>
-        <a href="#interpolation" class="nav-link">Interpolation</a>
-        <a href="#at-rules" class="nav-link">At-Rules</a>
-        <a href="#values" class="nav-link">Values</a>
-        <a href="#operators" class="nav-link">Operators</a>
-        <a href="#built-in-modules" class="nav-link">Built-In Modules</a>
-        <a href="#breaking-changes" class="nav-link">Breaking Changes</a>
-        <a href="#command-line" class="nav-link">command-line-interface</a>
+        <header id="nav-header">Sass documentation</header>
+        <a href="#Syntax" class="nav-link">Syntax</a>
+        <a href="#Style_Rules" class="nav-link">Style Rules</a>
+        <a href="#Variables" class="nav-link">Variables</a>
+        <a href="#Interpolation" class="nav-link">Interpolation</a>
+        <a href="#At-Rules" class="nav-link">At-Rules</a>
+        <a href="#Values" class="nav-link">Values</a>
+        <a href="#Operators" class="nav-link">Operators</a>
+        <a href="#Built-In_Modules" class="nav-link">Built-In Modules</a>
+        <a href="#Breaking_Changes" class="nav-link">Breaking Changes</a>
+        <a href="#Command_Line" class="nav-link">Command Line</a>
+        <a href="#Reference" class="nav-link">Reference</a>
     </nav>
     <main id="main-doc">
-        <section class="main-section" id="syntax">
-            <header>Syntax</header>
+        <section class="main-section" id="Syntax">
+            <header class="section-header">Syntax</header>
             <article>
                 <h2>Sass supports two different syntaxes. Each one can load the other, so it's up to you and your team which one to choose.</h2>
                 <h3>SCSS</h3>
@@ -72,8 +74,8 @@
                   </code>
             </article>
         </section>
-        <section class="main-section" id="style-rules">
-            <header>Style Rules</header>
+        <section class="main-section" id="Style_Rules">
+            <header class="section-header">Style Rules</header>
             <article>
                 <h2>Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and declare properties that affect how those elements look.</h2>
                 <h3>SCSS</h3>
@@ -101,11 +103,11 @@
                   </code>
             </article>
         </section>
-        <section class="main-section" id="variables">
-            <header>Variables</header>
+        <section class="main-section" id="Variables">
+            <header class="section-header">Variables</header>
             <article>
                 <h2>Sass variables are simple: you assign a value to a name that begins with $, and then you can refer to that name instead of the value itself. But despite their simplicity, they're one of the most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do complex math, configure libraries, and much more.</h2>
-                <p>A variable declaration looks a lot like a property declaration: it’s written <variable>: <expression>. Unlike a property, which can only be declared in a style rule or at-rule, variables can be declared anywhere you want. To use a variable, just include it in a value.</p>
+                <p>A variable declaration looks a lot like a property declaration: it’s written &lt;variable>: &lt;expression>. Unlike a property, which can only be declared in a style rule or at-rule, variables can be declared anywhere you want. To use a variable, just include it in a value.</p>
                 <h3>SCSS</h3>
                 <code>$base-color: #c6538c;
                     $border-dark: rgba($base-color, 0.88);
@@ -176,8 +178,8 @@
                 </aside>
             </article>
         </section>
-        <section class="main-section" id="interpolation">
-            <header>Interpolation</header>
+        <section class="main-section" id="Interpolation">
+            <header class="section-header">Interpolation</header>
             <article>
                 <h2>Interpolation can be used almost anywhere in a Sass stylesheet to embed the result of a SassScript expression into a chunk of CSS. Just wrap an expression in #{} in any of the following places:</h2>
                 <ul>
@@ -230,8 +232,8 @@
                   </code>
             </article>
         </section>
-        <section class="main-section" id="at-rules">
-            <header>At-Rules</header>
+        <section class="main-section" id="At-Rules">
+            <header class="section-header">At-Rules</header>
             <article>
                 <h2>Much of Sass’s extra functionality comes in the form of new at-rules it adds on top of CSS:</h2>
                 <ul>
@@ -250,8 +252,8 @@
                 <p>Sass also has some special behavior for plain CSS at-rules: they can contain interpolation, and they can be nested in style rules. Some of them, like @media and @supports, also allow SassScript to be used directly in the rule itself without interpolation.</p>
             </article>
         </section>
-        <section class="main-section" id="values">
-            <header>Values</header>
+        <section class="main-section" id="Values">
+            <header class="section-header">Values</header>
             <article>
                 <h2>Sass supports a number of value types, most of which come straight from CSS. Every expression produces a value, variables hold values. Most value types come straight from CSS:</h2>
                 <ul>
@@ -269,8 +271,8 @@
                 </ul>
             </article>
         </section>
-        <section class="main-section" id="operators">
-            <header>Operators</header>
+        <section class="main-section" id="Operators">
+            <header class="section-header">Operators</header>
             <article>
                 <h2>Sass supports a handful of useful operators for working with different values. These include the standard mathematical operators like + and *, as well as operators for various other types:</h2>
                 <ul>
@@ -287,8 +289,8 @@
                 </ul>
             </article>
         </section>
-        <section class="main-section" id="built-in-modules">
-            <header>Built-In Modules</header>
+        <section class="main-section" id="Built-In_Modules">
+            <header class="section-header">Built-In Modules</header>
             <article>
                 <h2>Sass provides many built-in modules which contain useful functions (and the occasional mixin). These modules can be loaded with the @use rule like any user-defined stylesheet, and their functions can be called like any other module member. All built-in module URLs begin with sass: to indicate that they're part of Sass itself.</h2>
                 <aside>
@@ -333,8 +335,8 @@
                 </ul>
             </article>
         </section>
-        <section class="main-section" id="breaking-changes">
-            <header>Breaking Changes</header>
+        <section class="main-section" id="Breaking_Changes">
+            <header class="section-header">Breaking Changes</header>
             <article>
                 <h2>New versions of Sass are as backwards-compatible as possible, but sometimes a breaking change is necessary. Sass needs to keep up with the evolving CSS specification, and old language design mistakes occasionally need to be fixed.</h2>
                 <p>Before each breaking change is released, Sass implementations will produce deprecation warnings for stylesheets whose behavior will change. Whenever possible, these warnings will include suggestions for how to update the deprecated styles to make them forward-compatible.</p>
@@ -346,8 +348,8 @@
                 </ul>
             </article>
         </section>
-        <section class="main-section" id="command-line">
-            <header>Command Line</header>
+        <section class="main-section" id="Command_Line">
+            <header class="section-header">Command Line</header>
             <article>
                 <h2>Different implementations of Sass have different interfaces when using them from the command line:</h2>
                 <ul>
@@ -355,6 +357,12 @@
                     <li>Ruby Sass is deprecated, and we recommend you move to a different implementation.</li>
                 </ul>
             </article>
+        </section>
+        <section class="main-section" id="Reference">
+            <header class="section-header">Reference</header>
+            <ul>
+                <li>All the documentation in this page is taken from <a href="https://sass-lang.com/documentation" target="_blank">Sass</a>.</li>
+            </ul>
         </section>
     </main>
     

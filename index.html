@@ -29,7 +29,8 @@
                 <h3>SCSS</h3>
                 <p>The SCSS syntax uses the file extension .scss. With a few small exceptions, it’s a superset of CSS, which means essentially all valid CSS is valid SCSS as well. Because of its similarity to CSS, it’s the easiest syntax to get used to and the most popular.</p>
                 <p>SCSS looks like this:</p>
-                <code>@mixin button-base() {
+                <code>
+                  @mixin button-base() {
                     @include typography(button);
                     @include ripple-surface;
                     @include ripple-radius-bounded;
@@ -53,7 +54,8 @@
                 <p>The indented syntax was Sass’s original syntax, and so it uses the file extension .sass. Because of this extension, it’s sometimes just called “Sass”. The indented syntax supports all the same features as SCSS, but it uses indentation instead of curly braces and semicolons to describe the format of the document.</p>
                 <p>In general, any time you’d write curly braces in CSS or SCSS, you can just indent one level deeper in the indented syntax. And any time a line ends, that counts as a semicolon. There are also a few additional differences in the indented syntax that are noted throughout the reference.</p>
                 <p>The indented syntax looks like this:</p>
-                <code>@mixin button-base()
+                <code>
+                  @mixin button-base()
                     @include typography(button)
                     @include ripple-surface
                     @include ripple-radius-bounded
@@ -79,7 +81,8 @@
             <article>
                 <h2>Style rules are the foundation of Sass, just like they are for CSS. And they work the same way: you choose which elements to style with a selector, and declare properties that affect how those elements look.</h2>
                 <h3>SCSS</h3>
-                <code>.button {
+                <code>
+                  .button {
                     padding: 3px 10px;
                     font-size: 12px;
                     border-radius: 3px;
@@ -87,14 +90,16 @@
                   }
                   </code>
                 <h3>Sass</h3>
-                <code>.button
+                <code>
+                  .button
                     padding: 3px 10px
                     font-size: 12px
                     border-radius: 3px
                     border: 1px solid #e1e4e8
                   </code>
                 <h3>CSS</h3>
-                <code>.button {
+                <code>
+                  .button {
                     padding: 3px 10px;
                     font-size: 12px;
                     border-radius: 3px;
@@ -109,7 +114,8 @@
                 <h2>Sass variables are simple: you assign a value to a name that begins with $, and then you can refer to that name instead of the value itself. But despite their simplicity, they're one of the most useful tools Sass brings to the table. Variables make it possible to reduce repetition, do complex math, configure libraries, and much more.</h2>
                 <p>A variable declaration looks a lot like a property declaration: it’s written &lt;variable>: &lt;expression>. Unlike a property, which can only be declared in a style rule or at-rule, variables can be declared anywhere you want. To use a variable, just include it in a value.</p>
                 <h3>SCSS</h3>
-                <code>$base-color: #c6538c;
+                <code>
+                    $base-color: #c6538c;
                     $border-dark: rgba($base-color, 0.88);
                     
                     .alert {
@@ -117,19 +123,18 @@
                     }
                     </code>
                 <h3>Sass</h3>
-                <code>$base-color: #c6538c
+                <code>
+                    $base-color: #c6538c
                     $border-dark: rgba($base-color, 0.88)
                     
                     .alert
                       border: 1px solid $border-dark
                     </code>
                 <h3>CSS</h3>
-                <code>.alert {
+                <code>
+                  .alert {
                     border: 1px solid rgba(198, 83, 140, 0.88);
                   }
-                  
-                  
-                  
                   </code>
                 <aside>
                     <h3>Heads up!</h3>
@@ -140,7 +145,8 @@
                         <li>Sass variables are imperative, which means if you use a variable and then change its value, the earlier use will stay the same. CSS variables are declarative, which means if you change the value, it’ll affect both earlier uses and later uses.</li>
                     </ul>
                     <h3>SCSS</h3>
-                    <code>$variable: value 1;
+                    <code>
+                        $variable: value 1;
                         .rule-1 {
                           value: $variable;
                         }
@@ -151,7 +157,8 @@
                         }
                         </code>
                     <h3>Sass</h3>
-                    <code>$variable: value 1
+                    <code>
+                        $variable: value 1
                         .rule-1
                           value: $variable
                         
@@ -161,15 +168,14 @@
                           value: $variable
                         </code>
                     <h3>CSS</h3>
-                    <code>.rule-1 {
+                    <code>
+                      .rule-1 {
                         value: value 1;
                       }
                       
                       .rule-2 {
                         value: value 2;
                       }
-                      
-                      
                       </code>
                 </aside>
                 <aside>
@@ -195,7 +201,8 @@
                     <li>Loud comments</li>
                 </ul>
                 <h3>SCSS</h3>
-                <code>@mixin corner-icon($name, $top-or-bottom, $left-or-right) {
+                <code>
+                  @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
                     .icon-#{$name} {
                       background-image: url("/icons/#{$name}.svg");
                       position: absolute;
@@ -207,28 +214,24 @@
                   @include corner-icon("mail", top, left);
                   </code>
                 <h3>Sass</h3>
-                <code>@mixin corner-icon($name, $top-or-bottom, $left-or-right)
+                <code>
+                  @mixin corner-icon($name, $top-or-bottom, $left-or-right)
                     .icon-#{$name}
                       background-image: url("/icons/#{$name}.svg")
                       position: absolute
                       #{$top-or-bottom}: 0
                       #{$left-or-right}: 0
                   
-                  
-                  
-                  @include corner-icon("mail", top, right)
+                  @include corner-icon("mail", top, right);
                   </code>
                 <h3>CSS</h3>
-                <code>.icon-mail {
+                <code>
+                  .icon-mail {
                     background-image: url("/icons/mail.svg");
                     position: absolute;
                     top: 0;
                     left: 0;
                   }
-                  
-                  
-                  
-                  
                   </code>
             </article>
         </section>
@@ -299,7 +302,8 @@
                     <p>A few functions are only available globally even in the new module system, either because they have special evaluation behavior (if()) or because they add extra behavior on top of built-in CSS functions (rgb() and hsl()). These will not be deprecated and can be used freely.</p>
                 </aside>
                 <h3>SCSS</h3>
-                <code>@use "sass:color";
+                <code>
+                    @use "sass:color";
 
                     .button {
                       $primary-color: #6b717f;
@@ -308,7 +312,8 @@
                     }
                     </code>
                 <h3>Sass</h3>
-                <code>@use "sass:color"
+                <code>
+                    @use "sass:color"
 
                     .button
                       $primary-color: #6b717f
@@ -317,7 +322,8 @@
                     
                     </code>
                 <h3>CSS</h3>
-                <code>.button {
+                <code>
+                  .button {
                     color: #6b717f;
                     border: 1px solid #878d9a;
                   }

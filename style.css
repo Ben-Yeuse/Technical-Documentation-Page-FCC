@@ -80,3 +80,15 @@ section a {
 section a:hover {
     text-decoration: underline;
 }
+
+code {
+    display: inline-block;
+    background-color: gainsboro;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 0 30px 10px 30px;
+    text-align: left;
+    white-space: pre-line;
+    word-break: normal;
+    word-wrap: normal;
+}

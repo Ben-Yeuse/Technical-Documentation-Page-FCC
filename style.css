@@ -105,14 +105,14 @@ code {
     word-wrap: normal;
 }
 
-@media (max-width: 659px) {
+@media (max-width: 767px) {
     #navbar {
         height: 200px;
         overflow-y: scroll;
     }
 }
 
-@media(min-width: 760px) {
+@media(min-width: 768px) {
     #navbar {
         width: 300px;
         position: fixed;

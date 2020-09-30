@@ -14,8 +14,6 @@ body {
 }
 
 #navbar {
-    display: flex;
-    flex-direction: column;
     padding: 20px 25px;
     margin-bottom: 10px;
     line-height: 2.5rem;
@@ -25,15 +23,29 @@ body {
     font-weight: bold;
     font-size: 1.3rem;
     font-style: italic;
-    line-height: 4rem;
     border-top: 1px dotted #000;
     border-bottom: 1px dotted #000;
-    padding-left: 15px;
+    padding: 15px;
+    pointer-events: none;
 }
 
-#navbar a {
+#navbar ul li {
     border-bottom: 1px dotted #000;
     padding-left: 35px;
+}
+
+#navbar ul li:hover {
+    background-color: #EEE;
+}
+
+#navbar ul li a {
+    display: block;
+    transition: all 0.3s;
+}
+
+#navbar ul li:hover a {
+    margin-left: 10px;
+    transition: all 0.3s;
 }
 
 #main-doc {
@@ -42,8 +54,8 @@ body {
 
 .section-header {
     font-size: 2rem;
-    margin: 25px;
-    padding: 45px 25px 25px 25px;
+    margin: 25px 0 25px 10px;
+    padding: 45px 25px 25px 5px;
     border-top: 1px solid #000;
 }
 
@@ -91,4 +103,24 @@ code {
     white-space: pre-line;
     word-break: normal;
     word-wrap: normal;
+}
+
+@media (max-width: 659px) {
+    #navbar {
+        height: 200px;
+        overflow-y: scroll;
+    }
+}
+
+@media(min-width: 760px) {
+    #navbar {
+        width: 300px;
+        position: fixed;
+        overflow-y: scroll;
+        top:0;
+        bottom: 0;
+    }
+    #main-doc {
+        padding-left: 320px;
+    }
 }
